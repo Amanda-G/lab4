@@ -53,14 +53,28 @@ let bulb = document.querySelector(".light-bulb")
 light.addEventListener("click", (event) => {
     event.preventDefault;
     if (event.target.classList.contains("on")) {
-        bulb.style.backgroundColor = "lightgrey";
+        bulb.classList.add("turn-on")
+        //bulb.style.backgroundColor = "lightgrey";
     } else if (event.target.classList.contains("off")) {
-        bulb.style.backgroundColor = "rgb(80,77,77)";
+        bulb.classList.remove("turn-on");
+    } else if (event.target.classList.contains("toggle")) {
+        bulb.classList.toggle("turn-on")
+        // if (bulb.style.backgroundColor === "black") {
+        //     bulb.style.backgroundColor = "lightgrey";
+        // } else {
+        //     bulb.style.backgroundColor = "black";
+        // }
+    } else if (event.target.classList.contains("end")) {
+        let buttons = document.querySelectorAll(".button")
+        bulb.remove();
+        buttons.forEach((button) => {
+            button.disabled = true;
+        })
     }
 })
 
-let toggleButton = document.querySelector(".toggle");
-//use ontoggle??? 
+//let toggleButton = document.querySelector(".toggle");
+//use ontoggle???
 //ontoggle = funciton()
 // does not work. couldn't figure out
 // toggleButton.ontoggle = function () {
@@ -72,11 +86,11 @@ let toggleButton = document.querySelector(".toggle");
 // }
 
 
-let button = document.querySelector(".button")
-light.addEventListener("click", (event) => {
-    event.preventDefault;
-    if (event.target.classList.contains("end")) {
-        bulb.style.display = "none";
-        button.disabled = true;
-    }
-})
+
+// light.addEventListener("click", (event) => {
+//     event.preventDefault;
+//     if (event.target.classList.contains("end")) {
+//         bulb.style.display = "none";
+//         button.disabled = true;
+//     }
+// })
